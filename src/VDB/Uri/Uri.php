@@ -70,6 +70,10 @@ class Uri implements UriInterface
      */
     public function __construct($uri, $baseUri = null)
     {
+        if($uri instanceof self && $baseUri === null)
+        {
+            $baseUri = $this->baseUri = $uri->getBaseUri();
+        }
         $this->uri = trim($uri);
         $this->remaining = $this->uri;
 
@@ -296,6 +300,14 @@ class Uri implements UriInterface
     public function getFragment()
     {
         return $this->fragment;
+    }
+
+    /**
+     * @return null|Uri
+     */
+    public function getBaseUri()
+    {
+        return $this->baseUri;
     }
 
     /**
