@@ -74,6 +74,11 @@ class Uri implements UriInterface
         {
             $baseUri = $this->baseUri = $uri->getBaseUri();
         }
+        else if($baseUri !== null)
+        {
+            $this->baseUri = $baseUri;
+        }
+
         $this->uri = trim($uri);
         $this->remaining = $this->uri;
 
